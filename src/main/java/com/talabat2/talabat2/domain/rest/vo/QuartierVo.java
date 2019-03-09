@@ -5,6 +5,8 @@
  */
 package com.talabat2.talabat2.domain.rest.vo;
 
+import java.util.List;
+
 /**
  *
  * @author ASUS
@@ -14,6 +16,15 @@ public class QuartierVo {
     private Long id;
     private String nomQuartier;
     private VilleVo villeVo;
+    private List<RueVo> ruesVo;
+
+    public List<RueVo> getRuesVo() {
+        return ruesVo;
+    }
+
+    public void setRuesVo(List<RueVo> ruesVo) {
+        this.ruesVo = ruesVo;
+    }
 
     public Long getId() {
         return id;

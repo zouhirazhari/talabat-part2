@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RestaurantConverter extends AbstractConverter<Restaurant, RestaurantVo> {
-
+    
     @Override
     public Restaurant toItem(RestaurantVo restauVo) {
         if (restauVo == null) {
@@ -30,11 +30,12 @@ public class RestaurantConverter extends AbstractConverter<Restaurant, Restauran
             restau.setCategorie(new CategorieConverter().toItem(restauVo.getCategorieVo()));
             restau.setRue(new RueConverter().toItem(restauVo.getRueVo()));
             restau.setNum(NumberUtil.toInteger(restauVo.getNum()));
+            restau.setPlatRestaurants(new PlatRestaurantConverter().toItem(restauVo.getPlatRestaurantsVo()));
             return restau;
         }
-
+        
     }
-
+    
     @Override
     public RestaurantVo toVo(Restaurant restau) {
         if (restau == null) {
@@ -48,10 +49,11 @@ public class RestaurantConverter extends AbstractConverter<Restaurant, Restauran
             restauVo.setCategorieVo(new CategorieConverter().toVo(restau.getCategorie()));
             restauVo.setRueVo(new RueConverter().toVo(restau.getRue()));
             restauVo.setNum(restau.getNum() + "");
+            restauVo.setPlatRestaurantsVo(new PlatRestaurantConverter().toVo(restau.getPlatRestaurants()));
             return restauVo;
-
+            
         }
-
+        
     }
-
+    
 }

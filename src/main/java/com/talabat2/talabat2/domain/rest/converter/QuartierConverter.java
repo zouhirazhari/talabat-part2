@@ -7,14 +7,13 @@ package com.talabat2.talabat2.domain.rest.converter;
 
 import com.talabat2.talabat2.domain.bean.Quartier;
 import com.talabat2.talabat2.domain.rest.vo.QuartierVo;
-import com.sun.javafx.geom.Quat4f;
 
 /**
  *
  * @author ASUS
  */
 public class QuartierConverter extends AbstractConverter<Quartier, QuartierVo> {
-
+    
     @Override
     public Quartier toItem(QuartierVo quartierVo) {
         if (quartierVo == null) {
@@ -23,25 +22,26 @@ public class QuartierConverter extends AbstractConverter<Quartier, QuartierVo> {
             Quartier quartier = new Quartier();
             quartier.setId(quartierVo.getId());
             quartier.setNomQuartier(quartierVo.getNomQuartier());
-            quartier.setVille(new VilleConverter().toItem(quartierVo.getVilleVo()) );
+            quartier.setVille(new VilleConverter().toItem(quartierVo.getVilleVo()));
+            quartier.setRues(new RueConverter().toItem(quartierVo.getRuesVo()));
             return quartier;
         }
     }
-
+    
     @Override
     public QuartierVo toVo(Quartier quartier) {
         if (quartier == null) {
             return null;
-        }
-        else {
+        } else {
             QuartierVo quartierVo = new QuartierVo();
             quartierVo.setId(quartier.getId());
             quartierVo.setNomQuartier(quartier.getNomQuartier());
             quartierVo.setVilleVo(new VilleConverter().toVo(quartier.getVille()));
+            quartierVo.setRuesVo(new RueConverter().toVo(quartier.getRues()));
             return quartierVo;
             
         }
-
+        
     }
-
+    
 }

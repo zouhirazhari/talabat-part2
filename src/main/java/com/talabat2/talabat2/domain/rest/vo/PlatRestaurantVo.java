@@ -16,6 +16,8 @@ public class PlatRestaurantVo {
     private String date;
     private PlatVo platVo;
     private RestaurantVo restaurantVo;
+    
+    
 
     public Long getId() {
         return id;
@@ -56,5 +58,6 @@ public class PlatRestaurantVo {
     public void setRestaurantVo(RestaurantVo restaurantVo) {
         this.restaurantVo = restaurantVo;
     }
+    
 
 }

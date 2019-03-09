@@ -14,33 +14,35 @@ import org.springframework.stereotype.Component;
  * @author ASUS
  */
 @Component
-public class VilleConverter extends AbstractConverter<Ville, VilleVo >{
-
+public class VilleConverter extends AbstractConverter<Ville, VilleVo> {
+    
     @Override
     public Ville toItem(VilleVo vo) {
-        if(vo==null){
+        if (vo == null) {
             return null;
-        }else {
+        } else {
             Ville ville = new Ville();
             ville.setId(vo.getId());
             ville.setNomVille(vo.getNomVille());
             ville.setPays(new PaysConverter().toItem(vo.getPaysVo()));
+            ville.setQuartiers(new QuartierConverter().toItem(vo.getQuartiersVo()));
             return ville;
         }
         
-     }
-
+    }
+    
     @Override
     public VilleVo toVo(Ville ville) {
-        if(ville== null){
+        if (ville == null) {
             return null;
         } else {
             VilleVo villeVo = new VilleVo();
             villeVo.setId(ville.getId());
             villeVo.setNomVille(ville.getNomVille());
             villeVo.setPaysVo(new PaysConverter().toVo(ville.getPays()));
+            villeVo.setQuartiersVo(new QuartierConverter().toVo(ville.getQuartiers()));
             return villeVo;
-                    
+            
         }
         
     }

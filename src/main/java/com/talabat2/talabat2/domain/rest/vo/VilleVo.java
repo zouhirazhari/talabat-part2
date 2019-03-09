@@ -5,17 +5,26 @@
  */
 package com.talabat2.talabat2.domain.rest.vo;
 
-import com.talabat2.talabat2.domain.bean.Pays;
+import java.util.List;
 
 /**
  *
  * @author ASUS
  */
- public class VilleVo {
+public class VilleVo {
 
     private Long id;
     private String nomVille;
     private PaysVo paysVo;
+    private List<QuartierVo> quartiersVo;
+
+    public List<QuartierVo> getQuartiersVo() {
+        return quartiersVo;
+    }
+
+    public void setQuartiersVo(List<QuartierVo> quartiersVo) {
+        this.quartiersVo = quartiersVo;
+    }
 
     public Long getId() {
         return id;
@@ -40,7 +49,5 @@ import com.talabat2.talabat2.domain.bean.Pays;
     public void setPaysVo(PaysVo paysVo) {
         this.paysVo = paysVo;
     }
-    
-    
 
 }

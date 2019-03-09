@@ -5,7 +5,7 @@
  */
 package com.talabat2.talabat2.domain.rest.vo;
 
-
+import java.util.List;
 
 /**
  *
@@ -18,9 +18,17 @@ public class RestaurantVo {
     private String nom;
     private String adresse;
     private String num;
-
     private CategorieVo categorieVo;
     private RueVo rueVo;
+    private List<PlatRestaurantVo> platRestaurantsVo;
+
+    public List<PlatRestaurantVo> getPlatRestaurantsVo() {
+        return platRestaurantsVo;
+    }
+
+    public void setPlatRestaurantsVo(List<PlatRestaurantVo> platRestaurantsVo) {
+        this.platRestaurantsVo = platRestaurantsVo;
+    }
 
     public Long getId() {
         return id;
