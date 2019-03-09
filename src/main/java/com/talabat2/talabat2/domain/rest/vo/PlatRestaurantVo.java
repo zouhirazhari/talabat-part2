@@ -5,16 +5,13 @@
  */
 package com.talabat2.talabat2.domain.rest.vo;
 
-import com.talabat2.talabat2.domain.bean.Plat;
-import com.talabat2.talabat2.domain.bean.Restaurant;
-import java.util.Date;
-
 /**
  *
  * @author ASUS
  */
 public class PlatRestaurantVo {
-     private Long id;
+
+    private Long id;
     private String reference;
     private String date;
     private PlatVo platVo;
@@ -59,7 +56,5 @@ public class PlatRestaurantVo {
     public void setRestaurantVo(RestaurantVo restaurantVo) {
         this.restaurantVo = restaurantVo;
     }
-    
-    
-    
+
 }

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/ta")
-public class CategoriRest {
+public class CategorieRest {
 
     @Autowired
     private CategorieService categorieService;

@@ -6,7 +6,6 @@
 package com.talabat2.talabat2.domain.rest;
 
 import com.talabat2.talabat2.domain.bean.Restaurant;
-import com.talabat2.talabat2.domain.model.dao.RestaurantDao;
 import com.talabat2.talabat2.domain.model.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
