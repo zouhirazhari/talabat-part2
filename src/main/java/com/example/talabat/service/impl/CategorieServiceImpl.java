@@ -61,7 +61,8 @@ public class CategorieServiceImpl implements CategorieService {
 
     @Override
     public Categorie findByNom(String nom) {
-        return categorieDao.findByNom(nom);
+       // return categorieDao.findByNom(nom);
+       return null;
 
     }
 
