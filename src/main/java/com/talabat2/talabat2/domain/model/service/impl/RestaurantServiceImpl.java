@@ -21,13 +21,21 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
-    
+
     @Autowired
     private RueService rueService;
     @Autowired
     private RestaurantDao restaurantDao;
     @Autowired
     private CategorieService categorieService;
+
+    public RueService getRueService() {
+        return rueService;
+    }
+
+    public void setRueService(RueService rueService) {
+        this.rueService = rueService;
+    }
 
     public RestaurantDao getRestaurantDao() {
         return restaurantDao;
@@ -59,33 +67,13 @@ public class RestaurantServiceImpl implements RestaurantService {
         } else if (restaurant.getRue() == null) {
             return -3;
         } else {
-            Rue rue = rueService.findByNom(restaurant.getRue().getNomRue());
-            Categorie c = categorieService.findByNom(restaurant.getCategorie().getNom());
             Restaurant r = findByReference(restaurant.getReference());
             if (r != null) {
                 return -4;
             } else {
-                
-                r = new Restaurant();
-                r.setAdresse(restaurant.getAdresse());
-                r.setRue(rue);
-                r.setCategorie(c);
-                r.setNum(restaurant.getNum());
-                r.setNom(restaurant.getNom());
-                r.setReference(restaurant.getReference());
-                
-                restaurantDao.save(r);
+                restaurantDao.save(restaurant);
                 return 1;
             }
         }
     }
-
-    public RueService getRueService() {
-        return rueService;
-    }
-
-    public void setRueService(RueService rueService) {
-        this.rueService = rueService;
-    }
-    
 }

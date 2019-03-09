@@ -12,9 +12,11 @@ import com.talabat2.talabat2.domain.bean.Rue;
  * @author ASUS
  */
 public interface RueService {
-    public Rue findByNom(String nomRue );
-    public int creerRue(Rue rue );
-     public Rue findByNomRueAndRueQuartierNomQuartier(String nomRue,String nomQuartier);
 
-    
+    public Rue findByNom(String nomRue);
+
+    public int creerRue(Rue rue);
+
+    public Rue findByNomRueAndRueQuartierNomQuartier(String nomRue, String nomQuartier);
+
 }

@@ -26,14 +26,14 @@ public class RestaurantRest {
     @Autowired
     private RestaurantService restaurantService;
 
-    @GetMapping("/findByReference/{reference}")
-    public Restaurant findByReference(@PathVariable String reference) {
-        return restaurantService.findByReference(reference);
-    }
-
     @PostMapping("/creerRestaurant")
     public int creerRestaurant(@RequestBody Restaurant restaurant) {
         return restaurantService.creerRestaurant(restaurant);
+    }
+
+    @GetMapping("/findByReference/{reference}")
+    public Restaurant findByReference(@PathVariable String reference) {
+        return restaurantService.findByReference(reference);
     }
 
     public RestaurantService getRestaurantService() {
