@@ -28,11 +28,25 @@ public class Quartier implements Serializable {
     private String nomQuartier;
     @ManyToOne
     private Ville ville;
+    @OneToMany(mappedBy = "quartier")
+    private List<Rue> rues;
+
+    public Quartier(Long id, String nomQuartier, Ville ville) {
+        this.id = id;
+        this.nomQuartier = nomQuartier;
+        this.ville = ville;
+    }
 
     public Quartier() {
     }
-    
-    
+
+    public List<Rue> getRues() {
+        return rues;
+    }
+
+    public void setRues(List<Rue> rues) {
+        this.rues = rues;
+    }
 
     public Ville getVille() {
         return ville;
@@ -49,7 +63,6 @@ public class Quartier implements Serializable {
     public void setNomQuartier(String nomQuartier) {
         this.nomQuartier = nomQuartier;
     }
-
 
     public Long getId() {
         return id;

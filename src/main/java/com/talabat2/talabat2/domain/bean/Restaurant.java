@@ -6,11 +6,13 @@
 package com.talabat2.talabat2.domain.bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,15 +25,17 @@ public class Restaurant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String reference ;
+    private String reference;
     private String nom;
     private String adresse;
     private int num;
-    
+
     @ManyToOne
     private Categorie categorie;
     @ManyToOne
     private Rue rue;
+    @OneToMany(mappedBy = "restaurant")
+    private List<PlatRestaurant> platRestaurants;
 
     public Rue getRue() {
         return rue;
@@ -40,9 +44,7 @@ public class Restaurant implements Serializable {
     public void setRue(Rue rue) {
         this.rue = rue;
     }
-    
 
-    
     public String getReference() {
         return reference;
     }
@@ -50,12 +52,10 @@ public class Restaurant implements Serializable {
     public void setReference(String reference) {
         this.reference = reference;
     }
-   
 
     public Restaurant() {
     }
 
-    
     public String getNom() {
         return nom;
     }
@@ -88,13 +88,31 @@ public class Restaurant implements Serializable {
         this.categorie = categorie;
     }
 
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Restaurant(Long id, String reference, String nom, String adresse, int num, Categorie categorie, Rue rue, List<PlatRestaurant> platRestaurants) {
+        this.id = id;
+        this.reference = reference;
+        this.nom = nom;
+        this.adresse = adresse;
+        this.num = num;
+        this.categorie = categorie;
+        this.rue = rue;
+        this.platRestaurants = platRestaurants;
+    }
+
+    public List<PlatRestaurant> getPlatRestaurants() {
+        return platRestaurants;
+    }
+
+    public void setPlatRestaurants(List<PlatRestaurant> platRestaurants) {
+        this.platRestaurants = platRestaurants;
     }
 
     @Override
@@ -121,5 +139,5 @@ public class Restaurant implements Serializable {
     public String toString() {
         return "com.example.talabat.bean.Restaurant[ id=" + id + " ]";
     }
-    
+
 }

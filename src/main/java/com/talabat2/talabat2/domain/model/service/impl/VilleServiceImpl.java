@@ -10,7 +10,6 @@ import com.talabat2.talabat2.domain.bean.Ville;
 import com.talabat2.talabat2.domain.model.dao.VilleDao;
 import com.talabat2.talabat2.domain.model.service.PaysService;
 import com.talabat2.talabat2.domain.model.service.VilleService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

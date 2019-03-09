@@ -5,16 +5,11 @@
  */
 package com.talabat2.talabat2.domain.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,20 +18,19 @@ import javax.persistence.OneToMany;
 @Entity
 public class Categorie implements Serializable {
 
-  
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nom;
-    
 
     public Categorie() {
     }
-    
-    
-   
+
+    public Categorie(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
 
     public String getNom() {
         return nom;
@@ -45,8 +39,6 @@ public class Categorie implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -80,5 +72,5 @@ public class Categorie implements Serializable {
     public String toString() {
         return "com.example.talabat.bean.Categorie[ id=" + id + " ]";
     }
-    
+
 }

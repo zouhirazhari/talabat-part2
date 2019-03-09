@@ -29,6 +29,26 @@ public class Ville implements Serializable {
     private String nomVille;
     @ManyToOne
     private Pays pays;
+    @OneToMany(mappedBy = "ville")
+    private List<Quartier> quartiers;
+
+    public Ville() {
+    }
+
+    public Ville(Long id, String nomVille, Pays pays, List<Quartier> quartiers) {
+        this.id = id;
+        this.nomVille = nomVille;
+        this.pays = pays;
+        this.quartiers = quartiers;
+    }
+
+    public List<Quartier> getQuartiers() {
+        return quartiers;
+    }
+
+    public void setQuartiers(List<Quartier> quartiers) {
+        this.quartiers = quartiers;
+    }
 
     public String getNomVille() {
         return nomVille;
@@ -38,11 +58,10 @@ public class Ville implements Serializable {
         this.nomVille = nomVille;
     }
 
-  
-
     public Pays getPays() {
         return pays;
     }
+
     @JsonSetter
     public void setPays(Pays pays) {
         this.pays = pays;

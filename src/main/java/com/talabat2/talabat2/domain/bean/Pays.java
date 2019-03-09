@@ -6,12 +6,10 @@
 package com.talabat2.talabat2.domain.bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,10 +23,15 @@ public class Pays implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nomPays;
-    
 
     public Pays() {
     }
+
+    public Pays(Long id, String nomPays) {
+        this.id = id;
+        this.nomPays = nomPays;
+    }
+    
 
     public String getNomPays() {
         return nomPays;
@@ -37,8 +40,6 @@ public class Pays implements Serializable {
     public void setNomPays(String nomPays) {
         this.nomPays = nomPays;
     }
-
- 
 
     public Long getId() {
         return id;

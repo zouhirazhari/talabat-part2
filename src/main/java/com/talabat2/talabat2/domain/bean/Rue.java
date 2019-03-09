@@ -24,6 +24,7 @@ public class Rue implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nomRue;
+
     @ManyToOne
     private Quartier quartier;
 

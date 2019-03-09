@@ -7,6 +7,7 @@ package com.talabat2.talabat2.domain.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,8 +27,9 @@ public class PlatRestaurant implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date date;
+
     @ManyToOne
     private Plat plat;
     @ManyToOne
@@ -48,7 +50,6 @@ public class PlatRestaurant implements Serializable {
     public void setDate(Date date) {
         this.date = date;
     }
-    
 
     public Plat getPlat() {
         return plat;
@@ -58,21 +59,20 @@ public class PlatRestaurant implements Serializable {
         this.plat = plat;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-    
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -99,5 +99,5 @@ public class PlatRestaurant implements Serializable {
     public String toString() {
         return "com.example.talabat.bean.PlatRestaurant[ id=" + id + " ]";
     }
-    
+
 }
