@@ -7,7 +7,6 @@ package com.talabat2.talabat2.domain.rest.converter;
 
 import com.talabat2.talabat2.domain.bean.PlatRestaurant;
 import com.talabat2.talabat2.commun.util.DateUtil;
-import com.talabat2.talabat2.domain.bean.Restaurant;
 import com.talabat2.talabat2.domain.rest.vo.PlatRestaurantVo;
 import org.springframework.stereotype.Component;
 
@@ -27,9 +26,9 @@ public class PlatRestaurantConverter extends AbstractConverter<PlatRestaurant, P
             
             pr.setId(vo.getId());
             pr.setReference(vo.getReference());
-            pr.setPlat(new PlatConverter().toItem(vo.getPlatVo()));
+           // pr.setPlat(new PlatConverter().toItem(vo.getPlatVo()));
             pr.setDate(DateUtil.parse(vo.getDate()));
-            pr.setRestaurant(new RestaurantConverter().toItem(vo.getRestaurantVo()));
+            //pr.setRestaurant(new RestaurantConverter().toItem(vo.getRestaurantVo()));
             return pr;
         }
         
@@ -43,9 +42,9 @@ public class PlatRestaurantConverter extends AbstractConverter<PlatRestaurant, P
             PlatRestaurantVo prVo = new PlatRestaurantVo();
             prVo.setId(pr.getId());
             prVo.setDate(DateUtil.formateDate(pr.getDate()));
-            prVo.setPlatVo(new PlatConverter().toVo(pr.getPlat()));
+          //  prVo.setPlatVo(new PlatConverter().toVo(pr.getPlat()));
             prVo.setReference(pr.getReference());
-            prVo.setRestaurantVo(new RestaurantConverter().toVo(pr.getRestaurant()));
+          //  prVo.setRestaurantVo(new RestaurantConverter().toVo(pr.getRestaurant()));
             return prVo;
             
         }

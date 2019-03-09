@@ -24,7 +24,7 @@ public class VilleConverter extends AbstractConverter<Ville, VilleVo> {
             Ville ville = new Ville();
             ville.setId(vo.getId());
             ville.setNomVille(vo.getNomVille());
-            ville.setPays(new PaysConverter().toItem(vo.getPaysVo()));
+           // ville.setPays(new PaysConverter().toItem(vo.getPaysVo()));
             ville.setQuartiers(new QuartierConverter().toItem(vo.getQuartiersVo()));
             return ville;
         }
@@ -39,7 +39,7 @@ public class VilleConverter extends AbstractConverter<Ville, VilleVo> {
             VilleVo villeVo = new VilleVo();
             villeVo.setId(ville.getId());
             villeVo.setNomVille(ville.getNomVille());
-            villeVo.setPaysVo(new PaysConverter().toVo(ville.getPays()));
+            //villeVo.setPaysVo(new PaysConverter().toVo(ville.getPays()));
             villeVo.setQuartiersVo(new QuartierConverter().toVo(ville.getQuartiers()));
             return villeVo;
             

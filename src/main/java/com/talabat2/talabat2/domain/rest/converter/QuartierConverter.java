@@ -22,7 +22,7 @@ public class QuartierConverter extends AbstractConverter<Quartier, QuartierVo> {
             Quartier quartier = new Quartier();
             quartier.setId(quartierVo.getId());
             quartier.setNomQuartier(quartierVo.getNomQuartier());
-            quartier.setVille(new VilleConverter().toItem(quartierVo.getVilleVo()));
+           // quartier.setVille(new VilleConverter().toItem(quartierVo.getVilleVo()));
             quartier.setRues(new RueConverter().toItem(quartierVo.getRuesVo()));
             return quartier;
         }
@@ -36,7 +36,7 @@ public class QuartierConverter extends AbstractConverter<Quartier, QuartierVo> {
             QuartierVo quartierVo = new QuartierVo();
             quartierVo.setId(quartier.getId());
             quartierVo.setNomQuartier(quartier.getNomQuartier());
-            quartierVo.setVilleVo(new VilleConverter().toVo(quartier.getVille()));
+           // quartierVo.setVilleVo(new VilleConverter().toVo(quartier.getVille()));
             quartierVo.setRuesVo(new RueConverter().toVo(quartier.getRues()));
             return quartierVo;
             

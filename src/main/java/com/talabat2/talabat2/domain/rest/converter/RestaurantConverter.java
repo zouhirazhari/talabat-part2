@@ -27,8 +27,8 @@ public class RestaurantConverter extends AbstractConverter<Restaurant, Restauran
             restau.setId(restauVo.getId());
             restau.setNom(restauVo.getNom());
             restau.setReference(restauVo.getReference());
-            restau.setCategorie(new CategorieConverter().toItem(restauVo.getCategorieVo()));
-            restau.setRue(new RueConverter().toItem(restauVo.getRueVo()));
+           // restau.setCategorie(new CategorieConverter().toItem(restauVo.getCategorieVo()));
+           // restau.setRue(new RueConverter().toItem(restauVo.getRueVo()));
             restau.setNum(NumberUtil.toInteger(restauVo.getNum()));
             restau.setPlatRestaurants(new PlatRestaurantConverter().toItem(restauVo.getPlatRestaurantsVo()));
             return restau;
@@ -46,8 +46,8 @@ public class RestaurantConverter extends AbstractConverter<Restaurant, Restauran
             restauVo.setId(restau.getId());
             restauVo.setNom(restau.getNom());
             restauVo.setReference(restau.getReference());
-            restauVo.setCategorieVo(new CategorieConverter().toVo(restau.getCategorie()));
-            restauVo.setRueVo(new RueConverter().toVo(restau.getRue()));
+          //  restauVo.setCategorieVo(new CategorieConverter().toVo(restau.getCategorie()));
+           // restauVo.setRueVo(new RueConverter().toVo(restau.getRue()));
             restauVo.setNum(restau.getNum() + "");
             restauVo.setPlatRestaurantsVo(new PlatRestaurantConverter().toVo(restau.getPlatRestaurants()));
             return restauVo;

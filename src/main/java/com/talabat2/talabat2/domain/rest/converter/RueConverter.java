@@ -24,7 +24,7 @@ public class RueConverter extends AbstractConverter<Rue, RueVo> {
             Rue rue = new Rue();
             rue.setId(rueVo.getId());
             rue.setNomRue(rueVo.getNomRue());
-            rue.setQuartier(new QuartierConverter().toItem(rueVo.getQuartierVo()));
+          //  rue.setQuartier(new QuartierConverter().toItem(rueVo.getQuartierVo()));
             return rue;
 
         }
@@ -39,7 +39,7 @@ public class RueConverter extends AbstractConverter<Rue, RueVo> {
             RueVo rueVo = new RueVo();
             rueVo.setId(rue.getId());
             rueVo.setNomRue(rueVo.getNomRue());
-            rueVo.setQuartierVo(new QuartierConverter().toVo(rue.getQuartier()));
+           // rueVo.setQuartierVo(new QuartierConverter().toVo(rue.getQuartier()));
             return rueVo;
         }
     }
