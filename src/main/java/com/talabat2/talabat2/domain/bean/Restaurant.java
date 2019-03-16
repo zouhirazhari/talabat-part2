@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @Entity
 public class Restaurant implements Serializable {

@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author ASUS
+ * @author Wadie
  */
 @Entity
 public class Categorie implements Serializable {
