@@ -9,6 +9,10 @@ import com.talabat2.talabat2.domain.bean.Categorie;
 import com.talabat2.talabat2.domain.bean.Restaurant;
 import com.talabat2.talabat2.domain.model.service.CategorieService;
 import com.talabat2.talabat2.domain.model.service.RestaurantService;
+import com.talabat2.talabat2.domain.rest.converter.CategorieConverter;
+import com.talabat2.talabat2.domain.rest.converter.RestaurantConverter;
+import com.talabat2.talabat2.domain.rest.vo.CategorieVo;
+import com.talabat2.talabat2.domain.rest.vo.RestaurantVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,25 +35,29 @@ public class CategorieRest {
     private RestaurantService restaurantService;
 
     @GetMapping("/findbyref/{reference}")
-    public Restaurant findByReference(@PathVariable String reference) {
-        return restaurantService.findByReference(reference);
+    public RestaurantVo findByReference(@PathVariable String reference) {
+        Restaurant restaurant = restaurantService.findByReference(reference);
+        return new RestaurantConverter().toVo(restaurant);
     }
 
     @PostMapping("/creerRestaurant")
-    public int creerRestaurant(@RequestBody Restaurant restaurant) {
+    public int creerRestaurant(@RequestBody RestaurantVo restaurantVo) {
+        Restaurant restaurant = new RestaurantConverter().toItem(restaurantVo);
         return restaurantService.creerRestaurant(restaurant);
     }
 
     @GetMapping("/findByCategorieNom/{nom}")
-    public Categorie findByCategorieNom(@PathVariable String nom) {
-        return categorieService.findByNom(nom);
+    public CategorieVo findByCategorieNom(@PathVariable String nom) {
+        Categorie categorie = categorieService.findByNom(nom);
+        return new CategorieConverter().toVo(categorie);
     }
 
     @PostMapping("/creerCategorie")
-    public int creerCategorie(@RequestBody Categorie categorie) {
+    public int creerCategorie(@RequestBody CategorieVo categorieVo) {
+        Categorie categorie=new CategorieConverter().toItem(categorieVo);
         return categorieService.creerCategorie(categorie);
     }
-
+    //*****************getters et setters ************************************//
     public CategorieService getCategorieService() {
         return categorieService;
     }

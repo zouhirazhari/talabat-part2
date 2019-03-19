@@ -7,8 +7,8 @@ package com.talabat2.talabat2.domain.model.service.impl;
 
 import com.talabat2.talabat2.domain.bean.Quartier;
 import com.talabat2.talabat2.domain.bean.Rue;
+import com.talabat2.talabat2.domain.model.dao.QuartierDao;
 import com.talabat2.talabat2.domain.model.dao.RueDao;
-import com.talabat2.talabat2.domain.model.service.QuartierService;
 import com.talabat2.talabat2.domain.model.service.RueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,15 @@ public class RueServiceImpl implements RueService {
     @Autowired
     private RueDao rueDao;
     @Autowired
-    private QuartierService quartierService;
+    private QuartierDao quartierDao;
+
+    public QuartierDao getQuartierDao() {
+        return quartierDao;
+    }
+
+    public void setQuartierDao(QuartierDao quartierDao) {
+        this.quartierDao = quartierDao;
+    }
 
     public RueDao getRueDao() {
         return rueDao;
@@ -33,14 +41,6 @@ public class RueServiceImpl implements RueService {
         this.rueDao = rueDao;
     }
 
-    public QuartierService getQuartierService() {
-        return quartierService;
-    }
-
-    public void setQuartierService(QuartierService quartierService) {
-        this.quartierService = quartierService;
-    }
-
     @Override
     public Rue findByNom(String nom) {
         return rueDao.findByNomRue(nom);
@@ -48,34 +48,16 @@ public class RueServiceImpl implements RueService {
 
     @Override
     public int creerRue(Rue rue) {
+        Rue r = rueDao.findByNomRue(rue.getNomRue());
+        Quartier q = quartierDao.findByNomQuartier(r.getQuartier().getNomQuartier());
+
         if (rue == null) {
             return -1;
-        } else if (rue.getQuartier() == null) {
+        } else if (q != null) {
             return -2;
         } else {
-            Rue r = rueDao.findByNomRueAndQuartierNomQuartier(rue.getNomRue(),rue.getQuartier().getNomQuartier());
-            if (r != null) {
-                return -3;
-            } else {
-                Quartier q = quartierService.findByNomQuartierAndQuartierVilleNomVille(rue.getQuartier().getNomQuartier(),rue.getQuartier().getVille().getNomVille());
-                if (q == null) {
-                    return -4;
-                } else {
-                    r = new Rue();
-                    r.setQuartier(q);
-                    r.setNomRue(rue.getNomRue());
-                    rueDao.save(r);
-                    return 1;
-                }
-
-            }
-
+            rueDao.save(r);
+            return 1;
         }
     }
-
-    @Override
-    public Rue findByNomRueAndRueQuartierNomQuartier(String rue, String quartier) {
-        return rueDao.findByNomRueAndQuartierNomQuartier(rue, quartier);
-    }
-
 }

@@ -12,7 +12,9 @@ import com.talabat2.talabat2.domain.bean.Pays;
  * @author ASUS
  */
 public interface PaysService {
+
     public int creerPays(Pays pays);
-       public Pays findByNom(String nomPays);
-    
+
+    public Pays findByNom(String nomPays);
+
 }

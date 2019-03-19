@@ -21,14 +21,6 @@ public class PlatServiceImpl implements PlatService {
     @Autowired
     private PlatDao platDao;
 
-    public PlatDao getPlatDao() {
-        return platDao;
-    }
-
-    public void setPlatDao(PlatDao platDao) {
-        this.platDao = platDao;
-    }
-
     @Override
     public int creerPlat(Plat plat) {
         if (plat == null) {
@@ -42,15 +34,22 @@ public class PlatServiceImpl implements PlatService {
                 p.setNom(plat.getNom());
                 platDao.save(p);
                 return 1;
-
             }
-
         }
     }
 
     @Override
     public Plat findByNom(String nom) {
         return platDao.findByNom(nom);
+    }
+
+    //****************getters et setters *****************//
+    public PlatDao getPlatDao() {
+        return platDao;
+    }
+
+    public void setPlatDao(PlatDao platDao) {
+        this.platDao = platDao;
     }
 
 }

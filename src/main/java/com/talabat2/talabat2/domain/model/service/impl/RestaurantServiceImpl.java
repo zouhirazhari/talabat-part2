@@ -29,30 +29,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Autowired
     private CategorieService categorieService;
 
-    public RueService getRueService() {
-        return rueService;
-    }
-
-    public void setRueService(RueService rueService) {
-        this.rueService = rueService;
-    }
-
-    public RestaurantDao getRestaurantDao() {
-        return restaurantDao;
-    }
-
-    public void setRestaurantDao(RestaurantDao restaurantDao) {
-        this.restaurantDao = restaurantDao;
-    }
-
-    public CategorieService getCategorieService() {
-        return categorieService;
-    }
-
-    public void setCategorieService(CategorieService categorieService) {
-        this.categorieService = categorieService;
-    }
-
     @Override
     public Restaurant findByReference(String reference) {
         return restaurantDao.findByReference(reference);
@@ -75,5 +51,30 @@ public class RestaurantServiceImpl implements RestaurantService {
                 return 1;
             }
         }
+    }
+//**************getters et setters ***********************//
+
+    public RueService getRueService() {
+        return rueService;
+    }
+
+    public void setRueService(RueService rueService) {
+        this.rueService = rueService;
+    }
+
+    public RestaurantDao getRestaurantDao() {
+        return restaurantDao;
+    }
+
+    public void setRestaurantDao(RestaurantDao restaurantDao) {
+        this.restaurantDao = restaurantDao;
+    }
+
+    public CategorieService getCategorieService() {
+        return categorieService;
+    }
+
+    public void setCategorieService(CategorieService categorieService) {
+        this.categorieService = categorieService;
     }
 }

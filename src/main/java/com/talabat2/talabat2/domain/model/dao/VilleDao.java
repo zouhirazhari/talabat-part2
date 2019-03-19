@@ -5,9 +5,7 @@
  */
 package com.talabat2.talabat2.domain.model.dao;
 
-import com.talabat2.talabat2.domain.bean.Pays;
 import com.talabat2.talabat2.domain.bean.Ville;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +17,7 @@ import org.springframework.stereotype.Repository;
 public interface VilleDao extends JpaRepository<Ville, Long> {
 
     public Ville findByNomVilleAndPaysNomPays(String nomPays, String nomVille);
-//     public Ville findBynom(String nomVille); 
+
+    public Ville findBynomVille(String nomVille);
 
 }

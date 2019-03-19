@@ -8,7 +8,6 @@ package com.talabat2.talabat2.domain.model.service.impl;
 import com.talabat2.talabat2.domain.bean.Quartier;
 import com.talabat2.talabat2.domain.bean.Ville;
 import com.talabat2.talabat2.domain.model.dao.QuartierDao;
-import com.talabat2.talabat2.domain.model.dao.VilleDao;
 import com.talabat2.talabat2.domain.model.service.QuartierService;
 import com.talabat2.talabat2.domain.model.service.VilleService;
 import java.util.List;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @Service
 public class QuartierServiceImpl implements QuartierService {
@@ -27,6 +26,33 @@ public class QuartierServiceImpl implements QuartierService {
     @Autowired
     private VilleService villeService;
 
+    @Override
+    public int creerQuartier(Quartier quartier) {
+        Quartier q = quartierDao.findByNomQuartier(quartier.getNomQuartier());
+        if (quartier == null) {
+            return -1;
+        } else if (q != null) {
+            return -2;
+
+        } else if (q.getVille() == quartier.getVille()) {
+            return -3;
+        } else {
+            quartierDao.save(q);
+            return 1;
+        }
+    }
+
+    @Override
+    public Quartier findByNomRue(String nomRue) {
+        return quartierDao.findByNomQuartier(nomRue);
+    }
+
+    @Override
+    public List<Quartier> findByVilleNom(Ville ville) {
+        return quartierDao.findByVille(ville);
+    }
+
+    //**************getters et setters *******************//
     public QuartierDao getQuartierDao() {
         return quartierDao;
     }
@@ -42,47 +68,4 @@ public class QuartierServiceImpl implements QuartierService {
     public void setVilleService(VilleService villeService) {
         this.villeService = villeService;
     }
-
-    @Override
-    public List<Quartier> findByVilleNom(String nomVille) {
-        return quartierDao.findByVilleNomVille(nomVille);
-    }
-
-//    @Override
-//    public Quartier findByNom(String nom) {
-//        return quartierDao.findByNom(nom);
-//    }
-    @Override
-    public int creerQuartier(Quartier quartier) {
-        if (quartier == null) {
-            return -1;
-        } else if (quartier.getVille() == null) {
-            return -2;
-
-        } else {
-            Quartier q = quartierDao.findByNomQuartierAndVilleNomVille(quartier.getNomQuartier(), quartier.getVille().getNomVille());
-            if (q != null) {
-                return -3;
-            } else {
-                Ville v = villeService.findByNomVilleAndVillePaysNomPays(quartier.getVille().getNomVille(), quartier.getVille().getPays().getNomPays());
-                if (v == null) {
-                    return -4;
-                } else {
-                    q = new Quartier();
-                    q.setNomQuartier(quartier.getNomQuartier());
-                    q.setVille(v);
-                    quartierDao.save(q);
-                    return 1;
-                }
-
-            }
-        }
-
-    }
-
-    @Override
-    public Quartier findByNomQuartierAndQuartierVilleNomVille(String nomQuartier, String nomVille) {
-        return quartierDao.findByNomQuartierAndVilleNomVille(nomQuartier, nomVille);
-    }
-
 }

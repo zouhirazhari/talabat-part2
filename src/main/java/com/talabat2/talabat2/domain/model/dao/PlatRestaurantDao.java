@@ -14,10 +14,8 @@ import org.springframework.stereotype.Repository;
  * @author ASUS
  */
 @Repository
-public interface PlatRestaurantDao extends JpaRepository<PlatRestaurant, Long>{
+public interface PlatRestaurantDao extends JpaRepository<PlatRestaurant, Long> {
+
     public PlatRestaurant findByReference(String reference);
-    
-    
-    
-    
+
 }

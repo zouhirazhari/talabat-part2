@@ -5,9 +5,7 @@
  */
 package com.talabat2.talabat2.domain.rest;
 
-import com.talabat2.talabat2.domain.bean.Quartier;
 import com.talabat2.talabat2.domain.bean.Rue;
-import com.talabat2.talabat2.domain.model.service.QuartierService;
 import com.talabat2.talabat2.domain.model.service.RueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,16 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @RestController
 @RequestMapping("/rue")
 public class RueRest {
 
-    @GetMapping("/rue/{nomRue}/quartier/{nomQuartier}")
-    public Rue findByNomRueAndRueQuartierNomQuartier(@PathVariable String nomRue, @PathVariable String nomQuartier) {
-        return rueService.findByNomRueAndRueQuartierNomQuartier(nomRue, nomQuartier);
-    }
     @Autowired
     private RueService rueService;
 

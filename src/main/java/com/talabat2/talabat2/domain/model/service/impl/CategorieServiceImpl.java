@@ -6,7 +6,6 @@
 package com.talabat2.talabat2.domain.model.service.impl;
 
 import com.talabat2.talabat2.domain.bean.Categorie;
-import com.talabat2.talabat2.domain.bean.Restaurant;
 import com.talabat2.talabat2.domain.model.dao.CategorieDao;
 import com.talabat2.talabat2.domain.model.service.CategorieService;
 import com.talabat2.talabat2.domain.model.service.RestaurantService;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @Service
 public class CategorieServiceImpl implements CategorieService {
@@ -26,30 +25,24 @@ public class CategorieServiceImpl implements CategorieService {
     @Autowired
     private RestaurantService restaurantService;
 
-    public RestaurantService getRestaurantService() {
-        return restaurantService;
-    }
-
-    public void setRestaurantService(RestaurantService restaurantService) {
-        this.restaurantService = restaurantService;
-    }
-
     @Override
     public int creerCategorie(Categorie categorie) {
         Categorie c = findByNom(categorie.getNom());
 
         if (c != null) {
             return -1;
-
         } else {
-
             categorieDao.save(categorie);
-
             return 1;
         }
-
     }
 
+    @Override
+    public Categorie findByNom(String nom) {
+        return categorieDao.findByNom(nom);
+    }
+
+    //********************getters et setters *******************//
     public CategorieDao getCategorieDao() {
         return categorieDao;
     }
@@ -58,10 +51,12 @@ public class CategorieServiceImpl implements CategorieService {
         this.categorieDao = categorieDao;
     }
 
-    @Override
-    public Categorie findByNom(String nom) {
-        return categorieDao.findByNom(nom);
+    public RestaurantService getRestaurantService() {
+        return restaurantService;
+    }
 
+    public void setRestaurantService(RestaurantService restaurantService) {
+        this.restaurantService = restaurantService;
     }
 
 }

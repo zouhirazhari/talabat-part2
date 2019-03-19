@@ -6,14 +6,15 @@
 package com.talabat2.talabat2.domain.model.service;
 
 import com.talabat2.talabat2.domain.bean.PlatRestaurant;
-import com.talabat2.talabat2.domain.bean.Restaurant;
 
 /**
  *
  * @author ASUS
  */
 public interface PlatRestaurantService {
+
     public int creerPlatRestaurant(PlatRestaurant platRestaurant);
+
     public PlatRestaurant findByReference(String reference);
-    
+
 }

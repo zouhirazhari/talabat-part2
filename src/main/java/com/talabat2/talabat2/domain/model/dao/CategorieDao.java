@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @Repository
 public interface CategorieDao extends JpaRepository<Categorie, Long>{

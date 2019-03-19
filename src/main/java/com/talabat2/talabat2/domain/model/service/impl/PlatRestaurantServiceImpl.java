@@ -66,7 +66,6 @@ public class PlatRestaurantServiceImpl implements PlatRestaurantService {
         } else {
             Plat p = platService.findByNom(platRestaurant.getPlat().getNom());
             Restaurant r = restaurantService.findByReference(platRestaurant.getRestaurant().getReference());
-
             PlatRestaurant pr = platRestaurantDao.findByReference(platRestaurant.getReference());
             if (pr != null) {
                 return -5;
@@ -75,7 +74,6 @@ public class PlatRestaurantServiceImpl implements PlatRestaurantService {
                 platRestaurant.setRestaurant(r);
                 platRestaurantDao.save(platRestaurant);
                 return 1;
-
             }
         }
     }

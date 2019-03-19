@@ -11,10 +11,11 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @Repository
-public interface PaysDao extends JpaRepository<Pays, Long>{
+public interface PaysDao extends JpaRepository<Pays, Long> {
+
     public Pays findByNomPays(String nomPays);
-    
+
 }

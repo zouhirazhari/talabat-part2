@@ -7,6 +7,8 @@ package com.talabat2.talabat2.domain.rest;
 
 import com.talabat2.talabat2.domain.bean.Pays;
 import com.talabat2.talabat2.domain.model.service.PaysService;
+import com.talabat2.talabat2.domain.rest.converter.PaysConverter;
+import com.talabat2.talabat2.domain.rest.vo.PaysVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,18 +24,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/pays")
 public class PaysRest {
+
     @Autowired
     private PaysService paysService;
-   
+
     @PostMapping("/creerpays")
-    public int creerPays(@RequestBody Pays pays) {
+    public int creerPays(@RequestBody PaysVo paysVo) {
+        Pays pays = new PaysConverter().toItem(paysVo);
         return paysService.creerPays(pays);
     }
-    @GetMapping("/findbynom/{nomPays}")
-    public Pays findByNom(@PathVariable String nomPays) {
-        return paysService.findByNom(nomPays);
-    }
 
+    @GetMapping("/findbynom/{nomPays}")
+    public PaysVo findByNom(@PathVariable String nomPays) {
+        Pays pays = paysService.findByNom(nomPays);
+        return new PaysConverter().toVo(pays);
+    }
+//********************getters et etters ****************** //
     public PaysService getPaysService() {
         return paysService;
     }
@@ -41,5 +47,5 @@ public class PaysRest {
     public void setPaysService(PaysService paysService) {
         this.paysService = paysService;
     }
-    
+
 }

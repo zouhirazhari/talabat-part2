@@ -11,10 +11,10 @@ import com.talabat2.talabat2.domain.bean.Plat;
  *
  * @author ASUS
  */
-
 public interface PlatService {
-    public int creerPlat(Plat plat); 
+
+    public int creerPlat(Plat plat);
+
     public Plat findByNom(String nom);
-    
-    
+
 }

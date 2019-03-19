@@ -7,6 +7,8 @@ package com.talabat2.talabat2.domain.rest;
 
 import com.talabat2.talabat2.domain.bean.PlatRestaurant;
 import com.talabat2.talabat2.domain.model.service.PlatRestaurantService;
+import com.talabat2.talabat2.domain.rest.converter.PlatRestaurantConverter;
+import com.talabat2.talabat2.domain.rest.vo.PlatRestaurantVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,14 +29,18 @@ public class PlatRestaurantRest {
     private PlatRestaurantService platRestaurantService;
 
     @PostMapping("/creerPlatRestaurant")
-    public int creerPlatRestaurant(@RequestBody PlatRestaurant platRestaurant) {
+    public int creerPlatRestaurant(@RequestBody PlatRestaurantVo platRestaurantVo) {
+        PlatRestaurant platRestaurant = new PlatRestaurantConverter().toItem(platRestaurantVo);
         return platRestaurantService.creerPlatRestaurant(platRestaurant);
     }
 
     @GetMapping("/findByPlatRestaurantRef/{reference}")
-    public PlatRestaurant findByReference(@PathVariable String reference) {
-        return platRestaurantService.findByReference(reference);
+    public PlatRestaurantVo findByReference(@PathVariable String reference) {
+
+        PlatRestaurant platRestaurant = platRestaurantService.findByReference(reference);
+        return new PlatRestaurantConverter().toVo(platRestaurant);
     }
+    //****************getters et setters *******************//
 
     public PlatRestaurantService getPlatRestaurantService() {
         return platRestaurantService;

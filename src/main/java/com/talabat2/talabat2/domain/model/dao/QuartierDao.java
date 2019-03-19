@@ -6,20 +6,20 @@
 package com.talabat2.talabat2.domain.model.dao;
 
 import com.talabat2.talabat2.domain.bean.Quartier;
+import com.talabat2.talabat2.domain.bean.Ville;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
 @Repository
 public interface QuartierDao extends JpaRepository<Quartier, Long> {
 
-    public List<Quartier> findByVilleNomVille(String nomVille);
+   public List<Quartier> findByVille(Ville ville);
 
-    public Quartier findByNomQuartierAndVilleNomVille(String nomQuartier, String nomVille);
-//    public Quartier findByNom(String nom);
+    public Quartier findByNomQuartier(String nomQuartier);
 
 }

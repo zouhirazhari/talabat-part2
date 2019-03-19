@@ -6,9 +6,8 @@
 package com.talabat2.talabat2.domain.model.service;
 
 import com.talabat2.talabat2.domain.bean.Quartier;
-import com.talabat2.talabat2.domain.model.dao.QuartierDao;
+import com.talabat2.talabat2.domain.bean.Ville;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -16,11 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public interface QuartierService {
 
-    public List<Quartier> findByVilleNom(String nomVille);
-//    public Quartier findByNom(String nom);
+    public List<Quartier> findByVilleNom(Ville ville);
 
     public int creerQuartier(Quartier quartier);
 
-    public Quartier findByNomQuartierAndQuartierVilleNomVille(String nomQuartier, String nomVille);
+    public Quartier findByNomRue(String nomRue);
 
 }

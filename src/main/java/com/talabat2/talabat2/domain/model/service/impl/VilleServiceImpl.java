@@ -25,22 +25,6 @@ public class VilleServiceImpl implements VilleService {
     @Autowired
     private PaysService paysService;
 
-    public VilleDao getVilleDao() {
-        return villeDao;
-    }
-
-    public void setVilleDao(VilleDao villeDao) {
-        this.villeDao = villeDao;
-    }
-
-    public PaysService getPaysService() {
-        return paysService;
-    }
-
-    public void setPaysService(PaysService paysService) {
-        this.paysService = paysService;
-    }
-
     @Override
     public int creerVille(Ville ville) {
         if (ville == null) {
@@ -67,18 +51,26 @@ public class VilleServiceImpl implements VilleService {
 
     }
 
-//    @Override
-//    public Ville findBynom(String nom) {
-//        return villeDao.findBynom(nom);
-//    }
-//
-//    @Override
-//    public Ville findBy(Pays pays, Ville ville) {
-//        return villeDao.findByPaysNom(pays,ville);
-//    }
     @Override
-    public Ville findByNomVilleAndVillePaysNomPays(String nomPays, String nomVille) {
-        return villeDao.findByNomVilleAndPaysNomPays(nomPays, nomVille);
+    public Ville findBynomVille(String nom) {
+        return villeDao.findBynomVille(nom);
+    }
+
+    //*****************getters et setters ******************//
+    public VilleDao getVilleDao() {
+        return villeDao;
+    }
+
+    public void setVilleDao(VilleDao villeDao) {
+        this.villeDao = villeDao;
+    }
+
+    public PaysService getPaysService() {
+        return paysService;
+    }
+
+    public void setPaysService(PaysService paysService) {
+        this.paysService = paysService;
     }
 
 }

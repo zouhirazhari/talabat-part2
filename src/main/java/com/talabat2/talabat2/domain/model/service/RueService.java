@@ -17,6 +17,4 @@ public interface RueService {
 
     public int creerRue(Rue rue);
 
-    public Rue findByNomRueAndRueQuartierNomQuartier(String nomRue, String nomQuartier);
-
 }

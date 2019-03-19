@@ -12,6 +12,8 @@ import com.talabat2.talabat2.domain.bean.Restaurant;
  * @author ASUS
  */
 public interface RestaurantService {
+
     public Restaurant findByReference(String reference);
-    public int creerRestaurant(Restaurant restaurant);    
+
+    public int creerRestaurant(Restaurant restaurant);
 }

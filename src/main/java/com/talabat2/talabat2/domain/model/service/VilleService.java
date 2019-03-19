@@ -5,19 +5,15 @@
  */
 package com.talabat2.talabat2.domain.model.service;
 
-import com.talabat2.talabat2.domain.bean.Pays;
 import com.talabat2.talabat2.domain.bean.Ville;
-import java.util.List;
 
 /**
  *
- * @author ASUS
+ * @author wadie
  */
-public interface VilleService  {
-    public int creerVille(Ville ville);
-    public  Ville findByNomVilleAndVillePaysNomPays(String nomPays , String nomVille);
-//    public Ville findBynom(String nom);
+public interface VilleService {
 
-    
-    
+    public int creerVille(Ville ville);
+
+    public Ville findBynomVille(String nom);
 }

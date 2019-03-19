@@ -6,7 +6,10 @@
 package com.talabat2.talabat2.domain.rest;
 
 import com.talabat2.talabat2.domain.bean.Quartier;
+import com.talabat2.talabat2.domain.bean.Ville;
 import com.talabat2.talabat2.domain.model.service.QuartierService;
+import com.talabat2.talabat2.domain.rest.converter.QuartierConverter;
+import com.talabat2.talabat2.domain.rest.vo.QuartierVo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,29 +26,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/quartier")
 public class QuartierRest {
-    
+
     @Autowired
     private QuartierService quartierService;
 
     @GetMapping("/f/{nomVille}")
-    public List<Quartier> findByVilleNom(@PathVariable String nomVille) {
-        return quartierService.findByVilleNom(nomVille);
+    public List<QuartierVo> findByVilleNom(@PathVariable Ville ville) {
+        List<Quartier> Quartiers = quartierService.findByVilleNom(ville);
+        return new QuartierConverter().toVo(Quartiers);
     }
-//    @GetMapping("/find/{nom}")
-//    public Quartier findByNom(@PathVariable String nom) {
-//        return quartierService.findByNom(nom);
-//    }
-//    
+
+    @GetMapping("/find/{nom}")
+    public QuartierVo findByNom(@PathVariable String nom) {
+        Quartier quartier = null;
+        // quartierService.findByNom(nom);
+        return new QuartierConverter().toVo(quartier);
+    }
+
     @PostMapping("/creerQuartier")
-    public int creerQuartier(@RequestBody Quartier quartier) {
+    public int creerQuartier(@RequestBody QuartierVo quartierVo) {
+        Quartier quartier = new QuartierConverter().toItem(quartierVo);
         return quartierService.creerQuartier(quartier);
     }
-    @GetMapping("/nq/{nomQuartier}/nv/{nomVille}")
-    public Quartier findByNomQuartierAndVilleNomVille(@PathVariable String nomQuartier,@PathVariable String nomVille) {
-        return quartierService.findByNomQuartierAndQuartierVilleNomVille(nomQuartier, nomVille);
-    }
-  
 
+    //************getters et setters ***************///
     public QuartierService getQuartierService() {
         return quartierService;
     }
@@ -53,5 +57,5 @@ public class QuartierRest {
     public void setQuartierService(QuartierService quartierService) {
         this.quartierService = quartierService;
     }
-    
+
 }
